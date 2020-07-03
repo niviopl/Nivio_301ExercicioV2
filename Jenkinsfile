@@ -12,13 +12,13 @@ pipeline{
         }
      }
      stages{
-	stage('Executar Testes'){
+	    stage('Executar Testes'){
           steps{
              sh  './mvnw test'
              echo 'teste executado'
           }
         }
-	stage('Criar o JAR'){
+	    stage('Criar o JAR'){
           steps{
              sh './mvnw clean package'
              echo 'JAR criado'
@@ -29,7 +29,13 @@ pipeline{
              sh 'scp -o StrictHostKeyChecking=no target/Api-Investimentos-0.0.1-SNAPSHOT.jar ubuntu@18.223.1.124:/home/ubuntu/'
              echo 'JAR Copiado para VM'
           }
-        }      
+        }
+        stage('Atualizar o Serviço'){
+          steps{
+             sh 'ssh -t ubuntu@18.223.1.124 sudo systemctl reload api-invest.service'
+             echo 'Serviço atualizado'
+          }
+        }
      }
 }
 
