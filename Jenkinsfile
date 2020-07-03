@@ -36,6 +36,7 @@ pipeline{
           }
         }
         stage('Atualizar o Serviço'){
+          when{branch 'master'}
           steps{
              /* sh 'ssh -o StrictHostKeyChecking=no -t ubuntu@18.223.1.124 sudo systemctl reload api-invest.service' */
              echo 'Serviço atualizado'
