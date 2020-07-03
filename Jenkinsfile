@@ -31,15 +31,14 @@ pipeline{
         }
         stage('Copiar o JAR na VM'){
           steps{
-             sh "scp -o StrictHostKeyChecking=no target/Api-Investimentos-0.0.1-SNAPSHOT.jar ${params.VM_USERNAME}@18.223.1.124:/home/ubuntu/"
              script{
                def targetPath = sh(
                  script:"find target/ -name Api-Investimentos-*.jar",
                  returnStdout:true
                ).trim()
              }
-             echo ${targetPath}
-             echo 'Copiado para VM'
+             sh "scp -o StrictHostKeyChecking=no target/Api-Investimentos-0.0.1-SNAPSHOT.jar ${params.VM_USERNAME}@18.223.1.124:/home/ubuntu/"
+             echo "${targetPath} Copiado para VM"
           }
         }
         stage('Atualizar o Serviço'){
