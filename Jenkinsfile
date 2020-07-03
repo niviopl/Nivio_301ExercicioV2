@@ -2,13 +2,13 @@ pipeline{
     agent any
       post{
         success{
-           echo 'Sucesso'
+           echo 'Sucesso!'
         }
         failure{
-           echo 'Falha'
+           echo 'Falha!'
         }
         always{
-           echo 'iniciado'
+           echo 'Iniciado!'
         }
      }
      stages{
@@ -26,7 +26,8 @@ pipeline{
         }
         stage('Copiar o JAR na VM'){
           steps{
-             sh 'scp -i Nivio.pem target/Api-Investimentos-0.0.1-SNAPSHOT.jar ubuntu@18.223.1.124:Api-Investimentos-0.0.1-SNAPSHOT.jar'
+             sh 'scp -o StrictHostKeyChecking=no target/Api-Investimentos-0.0.1-SNAPSHOT.jar ubuntu@18.223.1.124:/home/ubuntu/'
+             echo 'JAR Copiado para VM'
           }
         }      
      }
