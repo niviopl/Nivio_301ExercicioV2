@@ -38,7 +38,8 @@ pipeline{
                  ).trim()
                  echo "Arquivo ${targetPath}"
              }
-             sh "scp -o StrictHostKeyChecking=no target/Api-Investimentos-0.0.1-SNAPSHOT.jar ${params.VM_USERNAME}@18.223.1.124:/home/ubuntu/"
+             sh "scp -o StrictHostKeyChecking=no ${targetPath} ${params.VM_USERNAME}@18.223.1.124:/home/ubuntu/"
+             /*sh "scp -o StrictHostKeyChecking=no target/Api-Investimentos-0.0.1-SNAPSHOT.jar ${params.VM_USERNAME}@18.223.1.124:/home/ubuntu/"*/
              echo "Copiado para VM"
           }
         }
