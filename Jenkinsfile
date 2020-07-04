@@ -36,11 +36,11 @@ pipeline{
                  script:"find target/ -name Api-Investimentos-*.jar",
                  returnStdout:true
                  ).trim()
-                 echo "Arquivo ${targetPath}"
+                 sh "scp -o StrictHostKeyChecking=no ${targetPath} ${params.VM_USERNAME}@18.223.1.124:/home/ubuntu/"
+                 echo "Arquivo ${targetPath} Copiado para VM - Echo dentro do script"
              }
-             sh "scp -o StrictHostKeyChecking=no ${targetPath} ${params.VM_USERNAME}@18.223.1.124:/home/ubuntu/"
              /*sh "scp -o StrictHostKeyChecking=no target/Api-Investimentos-0.0.1-SNAPSHOT.jar ${params.VM_USERNAME}@18.223.1.124:/home/ubuntu/"*/
-             echo "Copiado para VM"
+             echo "Echo fora do script"
           }
         }
         stage('Atualizar o Serviço'){
