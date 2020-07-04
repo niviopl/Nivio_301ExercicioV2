@@ -38,8 +38,8 @@ pipeline{
               ).trim()
              }
              sh "scp -o StrictHostKeyChecking=no target/Api-Investimentos-0.0.1-SNAPSHOT.jar ${params.VM_USERNAME}@18.223.1.124:/home/ubuntu/"
-              /* echo "${targetPath} Copiado para VM" */
-             echo "Copiado para VM"
+             echo "${targetPath}"
+             /* echo "Copiado para VM" */
           }
         }
         stage('Atualizar o Serviço'){
