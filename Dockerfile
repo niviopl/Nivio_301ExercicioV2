@@ -1,8 +1,8 @@
 FROM ubuntu:latest
-RUN "sudo apt install openjdk-8-jdk"
-WORKDIR ./app
-COPY . .
-CMD ["java -jar Api-Investimentos-0.0.1-SNAPSHOT.jar"]
+#RUN apt update && install openjdk-8-jre
+WORKDIR /app
+COPY target/Api-Investimentos-0.0.1-SNAPSHOT.jar .
+CMD java -jar Api-Investimentos-0.0.1-SNAPSHOT.jar
 
 
 
