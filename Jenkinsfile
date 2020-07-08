@@ -17,12 +17,13 @@ pipeline{
      }
 
      stages{
+        /*
 	    stage("Executar Testes"){
           steps{
              sh  "./mvnw test"
              echo "teste executado"
           }
-        }
+        }*/
 	    stage("Criar o JAR"){
           steps{
              sh "./mvnw clean package"
