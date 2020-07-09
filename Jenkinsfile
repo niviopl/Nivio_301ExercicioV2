@@ -25,7 +25,7 @@ pipeline{
                     sh "while ! mysqladmin ping -h0.0.0.0 -P Port_Var --silent; do sleep 1; done"    */
                     sh  "./mvnw test"
                 }
-            }
+            /* } */
              echo "teste executado"
           }
         }
